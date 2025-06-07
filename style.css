@@ -1,0 +1,111 @@
+/* General Body and Header/Footer Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #007bff;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+footer {
+    padding: 20px;
+    text-align: center;
+    color: #777;
+    font-size: 0.9em;
+    margin-top: 40px;
+    background-color: #eee;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+}
+
+/* ---------------------------------------------------- */
+/* Mobile View (Default - no media query needed) */
+/* This styling applies when viewport width is less than 772px */
+#wrapper {
+    display: flex;
+    flex-direction: column; /* Stacks columns vertically */
+    align-items: center; /* Centers columns horizontally */
+    padding: 20px;
+    gap: 20px; /* Space between columns */
+}
+
+.column {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 90%; /* Columns take up most of the width on mobile */
+    box-sizing: border-box; /* Include padding and border in the width */
+    text-align: center; /* Center text and images */
+}
+
+.column h2 {
+    color: #007bff;
+    margin-top: 0;
+}
+
+.column img {
+    max-width: 100%; /* Images are responsive within their column */
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+/* ---------------------------------------------------- */
+/* Query #1: Tablet View */
+/* Trigger at 772px and act as "Tablet View" */
+@media (min-width: 772px) {
+    #wrapper {
+        flex-direction: row; /* Change to horizontal layout */
+        flex-wrap: wrap; /* Allow columns to wrap to the next line */
+        justify-content: space-around; /* Distribute space between columns */
+        align-items: flex-start; /* Align columns at the top */
+        padding: 20px 0; /* Adjust padding */
+    }
+
+    .column {
+        width: 45%; /* Each div takes 45% of viewport width */
+        margin-bottom: 20px; /* Add margin-bottom for wrapped items */
+        text-align: left; /* Adjust text alignment for wider view */
+    }
+
+    .column img {
+        max-height: 30vh; /* Images no more than 30% of viewport height */
+        width: auto; /* Maintain aspect ratio */
+        display: block; /* Ensure image behaves as a block element */
+        margin-left: auto; /* Center image if width < column width */
+        margin-right: auto; /* Center image if width < column width */
+    }
+}
+
+/* ---------------------------------------------------- */
+/* Query #2: Large Screen View */
+/* Trigger at 998px and act as "Large Screen View" */
+@media (min-width: 998px) {
+    #wrapper {
+        flex-wrap: nowrap; /* Prevent columns from wrapping */
+        justify-content: space-between; /* Space out columns evenly */
+        max-width: 1200px; /* Optional: Constrain max width of the layout */
+        margin: 0 auto; /* Center the wrapper on large screens */
+        padding: 20px; /* Reset padding for large screens */
+    }
+
+    .column {
+        width: 30%; /* Each div takes 30% of viewport width */
+        margin-bottom: 0; /* Remove margin-bottom as they are on one row */
+    }
+
+    .column img {
+        max-height: none; /* Remove max-height constraint from tablet view */
+        height: auto; /* Let height adjust naturally */
+    }
+}
